@@ -113,6 +113,12 @@ function calculate(){
   dataset.push($("#a").val());
   dataset.push($("#id").val());
 
+  // Get values TECHNICAL IMPACT FACTORS 
+  TS = + $("#lc").val() +
+  + $("#li").val() +
+  + $("#lav").val() +
+  + $("#lac").val() + 0;
+
   // Get values TECHNICAL IMPACT FACTORS and BUSINESS IMPACT FACTORS
   IS = + $("#lc").val() +
   + $("#li").val() +
@@ -133,12 +139,15 @@ function calculate(){
   
   var LS = (LS/8).toFixed(3);
   var IS = (IS/8).toFixed(3);
+  var TS = (TS/4).toFixed(3);
 
   var FLS = getRisk(LS);
   var FIS = getRisk(IS);
+  var TIS = getRisk(TS);
 
   $(".LS").text(LS + " " + FLS);
   $(".IS").text(IS + " " + FIS);
+  $(".TS").text(TS + " " + TIS);
 
   score = '(';
   score = score + 'SL:' + $("#sl").val() + '/';
@@ -159,7 +168,8 @@ function calculate(){
   score = score + 'PV:' + $("#pv").val();
   score = score + ')';
   $('#score').text(score);
-  $("#score").attr("href", "https://javierolmedo.github.io/OWASP-Calculator/?vector=" + score);
+  //$("#score").attr("href", "https://javierolmedo.github.io/OWASP-Calculator/?vector=" + score);
+  $("#score").attr("href", window.location.pathname + "?vector=" + score);
 
   if(getRisk(LS) == "LOW"){
       $(".LS").addClass("classNote");
@@ -177,7 +187,36 @@ function calculate(){
       $(".IS").addClass("classHigh");
   }
 
+  if(getRisk(TS) == "LOW"){
+      $(".TS").addClass("classNote");
+  } else if (getRisk(TS) == "MEDIUM"){
+      $(".TS").addClass("classMedium");
+  } else {
+      $(".TS").addClass("classHigh");
+  }
+
   //FINAL
+  var RTS = getCriticaly(FLS, TIS);
+  if(RTS == "NOTE"){
+      $(".RTS").text(RTS);
+      $(".RTS").addClass("classNote");
+  } else if (RTS == "LOW"){
+      $(".RTS").text(RTS);
+      $(".RTS").addClass("classLow");
+  } else if(RTS == "MEDIUM"){
+      $(".RTS").text(RTS);
+      $(".RTS").addClass("classMedium");
+  } else if(RTS == "HIGH"){
+      $(".RTS").text(RTS);
+      $(".RTS").addClass("classHigh");
+  } else if(RTS == "CRITICAL"){
+      $(".RTS").text(RTS);
+      $(".RTS").addClass("classCritical");
+  } else {
+      $(".RTS").text(RTS);
+      $(".RTS").addClass("classNote");
+  }
+
   var RS = getCriticaly(FLS, FIS);
   if(RS == "NOTE"){
       $(".RS").text(RS);
