@@ -238,6 +238,7 @@ function calculate(){
       $(".RS").addClass("classNote");
   }
 
+  updateRiskSummary(RS, LS, FLS, IS, FIS, TS, TIS);
   updateRiskChart(dataset, RS)
 }
 
@@ -296,6 +297,58 @@ function getUrlParameter(name) {
   var results = regex.exec(location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
+
+function updateRiskSummary(RS, LS, FLS, IS, FIS, TS, TIS) {
+  var colorMap = {
+    "NOTE": "#0000FF",
+    "LOW": "#008000",
+    "MEDIUM": "#FFA900",
+    "HIGH": "#FF0000",
+    "CRITICAL": "#800080"
+  };
+
+  function colored(text) {
+    return '<span style="color:' + colorMap[text] + '; font-weight:bold;">' + text + '</span>';
+  }
+
+  var html = 'Risk ' + colored(RS) +
+    ', likelihood score ' + LS + ' ' + colored(FLS) +
+    ', impact score ' + IS + ' ' + colored(FIS); 
+  
+  //', technical impact score ' + TS + ' ' + colored(TIS) + '.';
+
+  document.getElementById('risk-summary').innerHTML = html;
+}
+
+function toggleStrideCell(cell) {
+  var colorMap = {
+    "NOTE": "#0000FF",
+    "LOW": "#008000",
+    "MEDIUM": "#FFA900",
+    "HIGH": "#FF0000",
+    "CRITICAL": "#800080"
+  };
+
+  var bgMap = {
+    "NOTE": "rgba(0, 0, 255, 0.3)",
+    "LOW": "rgba(0, 128, 0, 0.3)",
+    "MEDIUM": "rgba(255, 169, 0, 0.3)",
+    "HIGH": "rgba(255, 0, 0, 0.3)",
+    "CRITICAL": "rgba(128, 0, 128, 0.3)"
+  };
+
+  var RS = $(".RS").text().trim();
+
+  if (cell.style.backgroundColor && cell.style.backgroundColor !== "") {
+    cell.style.backgroundColor = "";
+    cell.style.color = "#000000";
+  } else {
+    if (RS && colorMap[RS]) {
+      cell.style.backgroundColor = bgMap[RS];
+      cell.style.color = colorMap[RS];
+    }
+  }
+}
 
 function updateRiskChart(dataset, RS){
   var c = 0;

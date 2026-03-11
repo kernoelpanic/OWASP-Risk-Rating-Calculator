@@ -100,7 +100,7 @@
                   High chance of high reward (8)</option>
                 <option value="9"
                   title="High reward is almost guaranteed or instant/easily optainable">
-                  High instant reward/benefit (9)
+                  High instant reward (9)
                 </option>
               </select>
             </div>
@@ -130,15 +130,35 @@
             <div class="col-8">
               <select class="form-control" aria-label=".form-select-sm example" id="s" name="s" onchange="calculate()">
                 <option value="0">(0)</option>
-                <option value="1">(1)</option>
-                <option value="2">Developers, System administrators (2)</option>
-                <option value="3">(3)</option>
-                <option value="4">Intranet users (4)</option>
-                <option value="5">Partners (5)</option>
+                <option value="1"
+                  title="Highest level insider threat, or state level actor APT group">
+                  Highest level insider threat (1)</option>
+                <option value="2"
+                  title="Insider threats by high privilaged users/accounts, or APT group">
+                  Developers, System administrators (2)</option>
+                <option value="3"
+                  title="Secured internal network access, or special (server) account access (non-root)">
+                  Operators/Support roles (3)
+                </option>
+                <option value="4"
+                  title="Intranet/local network, or VPN users/accounts">
+                  Intranet users (4)</option>
+                <option value="5"
+                  title="Partner/customer acceess">
+                  Partners (5)
+                </option>
                 <option value="6">Authenticated users (6)</option>
-                <option value="7">(7)</option>
-                <option value="8">(8)</option>
-                <option value="9">Anonymous Internet users (9)</option>
+                <option value="7"
+                  title="Anonymous local network access, guest WiFi, proximity">
+                  Anonymous network access (7)
+                </option>
+                <option value="8"
+                  title="">
+                  (8)
+                </option>
+                <option value="9"
+                  title="Anyone with an internet connection">
+                  Anonymous Internet users (9)</option>
               </select>
             </div>
           </div>
@@ -148,19 +168,42 @@
         <section>
           <h5 class="border-bottom" title="Technical impact can be broken down into factors aligned with the traditional security areas of concern: confidentiality, integrity, availability, and accountability. The goal is to estimate the magnitude of the impact on the system if the vulnerability were to be exploited. ">Technical Impact Factors</h5>
           <div class="row">
-            <div class="h6 nomargin col-4 d-flex align-items-center" title="How much data could be disclosed and how sensitive is it?">Loss of confidentiality</div>
+            <div class="h6 nomargin col-4 d-flex align-items-center" title="How much (company) data could be disclosed and how sensitive is it?">Loss of confidentiality</div>
             <div class="col-8">
               <select class="form-control" aria-label=".form-select-sm example" id="lc" name="lc" onchange="calculate()">
                 <option value="0">(0)</option>
-                <option value="1">(1)</option>
-                <option value="2">Minimal non-sensitive data disclosed (2)</option>
-                <option value="3">(3)</option>
-                <option value="4">(4)</option>
-                <option value="5">(5)</option>
-                <option value="6">minimal critical data disclosed (6)</option>
-                <option value="7">extensive non-sensitive data disclosed (7)</option>
-                <option value="8">extensive critical data disclosed (8)</option>
-                <option value="9">all data disclosed (9)</option>
+                <option value="1"
+                  title="Minimal information disclosure">
+                  Minimal information disclosure (1)
+                </option>
+                <option value="2"
+                  title="Some non-sensitive data disclosed, concrete information disclosure, e.g., used software or protocols">
+                  Minimal/some non-sensitive data disclosed (2)
+                </option>
+                <option value="3"
+                  title="Serious information disclosure, precise versions and configuration indicators">
+                  Serious information disclosure (3)</option>
+                <option value="4"
+                  title="Extensive amounts of data of a component/product/device/service is disclosed">
+                  Extensive non-sensitive data of component disclosed (4)
+                </option>
+                <option value="5"
+                  title="All relevant non-sensitive data of a component/product/device/server compleatly disclosed">
+                  All non-sensitive data of component disclosed (5)
+                </option>
+                <option value="6"
+                  title="Some ciritical data of some customers/employees disclosed, PII or payment information">
+                  Minimal/some critical data disclosed (6)</option>
+                <option value="7"
+                  title="Extensive amounts of non-sensitive data disclosed, e.g., some data of all customers/employees">
+                  Extensive non-sensitive data disclosed (7)</option>
+                <option value="8"
+                  title="Extensive amounts of ciritcal data dsiclosed, e.g., payment information or personal information">
+                  Extensive critical data disclosed (8)</option>
+                <option value="9"
+                  title="All relevant company data disclosred">
+                  All (company) data disclosed (9)
+                </option>
               </select>
             </div>
           </div>
@@ -169,15 +212,39 @@
             <div class="col-8">
               <select class="form-control" aria-label=".form-select-sm example" id="li" name="li" onchange="calculate()">
                 <option value="0">(0)</option>
-                <option value="1">Minimal slightly corrupt data (1)</option>
-                <option value="2">(2)</option>
-                <option value="3">Minimal seriously corrupt data (3)</option>
-                <option value="4">(4)</option>
-                <option value="5">Extensive slightly corrupt data (5)</option>
-                <option value="6">(6)</option>
-                <option value="7">Extensive seriously corrupt data (7)</option>
-                <option value="8">(8)</option>
-                <option value="9">All data totally corrupt (9)</option>
+                <option value="1"
+                  title="Detectable and correctable data corruption of number of component/service/product/device (minimal number)">
+                  Minimal scope slightly corrupt data (1)
+                </option>
+                <option value="2"
+                  title="Detectable and correctable data corruption of some components/services/products/devices">
+                  Modest slightly corrupt data (2)
+                </option>
+                <option value="3"
+                  title"Some data of component/service/product/device is corrupted so that it cannot be corrected and has to be recovered from backup">
+                  Minimal scope seriously corrupt data (3)
+                </option>
+                <option value="4"
+                  title="Some data of some components/services/products/devices is corrupted">
+                  Modest scope seriously corrupted data (4)
+                </option>
+                <option value="5"
+                  title="Extensive amount of components/services/products/devices is sligthly corrupted (can be recovered without restoring from backup)">
+                  Extensive scope slightly corrupt data (5)
+                </option>
+                <option value="6"
+                  title="Combination of the previous two at the same time, or some backups of less imporant data missing/old">
+                  Modest scope seriously corrupted and extensive scope slightly corrupted data (6)
+                </option>
+                <option value="7"
+                  title="Extensive amount of components/services/products/devices seriously corrupted, or some backups missing/old">
+                  Extensive seriously corrupt data (7)</option>
+                <option value="8"
+                  title="Seriously corrupted important data which cannot be recovered from backup, or important backups corrupted">
+                  Seriously corrupted important data without backup (8)</option>
+                <option value="9"
+                  title="All relevant data is corrupt and cannot be recovered from backup">
+                  All data totally corrupt without backup (9)</option>
               </select>
             </div>
           </div>
@@ -416,8 +483,25 @@
       <section>
         <canvas class="riskChart" id="riskChart" height="75"></canvas>
         <!-- <div class="risk RS">
-          <h4>0</h4> --!
+        <h4>0</h4> -->
         </div>
+      </section>
+
+      <!-- SUMMARY TEXT -->
+      <section>
+        <p id="risk-summary" style="font-size: 14px; text-align: center; margin-top: 10px;"></p>
+        <!-- 
+        <table id="stride-table" style="margin: 20px auto; border-collapse: collapse; font-family: 'Poppins', sans-serif; font-size: 14px;">
+          <tr>
+            <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">S</td>
+            <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">T</td>
+            <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">R</td>
+            <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">I</td>
+            <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">D</td>
+            <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">E</td>
+          </tr>
+        </table>
+        -->
       </section>
 
       <!-- VECTOR -->
