@@ -23,11 +23,8 @@
   <body>
     <main>
       <section>
-        <h1>OWASP Risk Assessment Calculator</h1>
-        <canvas class="riskChart" id="riskChart" height="75"></canvas>
-        <div class="risk RS">
-          <h4>0</h4>
-        </div>
+        <h1>Modified OWASP Risk Assessment Calculator</h1>
+        <p> Modifications have been made to the descriptions of categories, to allow a more fine grained definition and to better distinguish between company wide- and product related impact factors. Moreover, the total technical risk (ignoring business impact factors), is also explicitly listed.</p>
       </section>
 
       <!-- FIRST -->
@@ -36,19 +33,43 @@
         <section>
           <h5 class="border-bottom" title="The first set of factors are related to the threat agent involved. The goal here is to estimate the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.">Threat Agent Factors</h5>
           <div class="row">
-            <div class="h6 nomargin col-4 d-flex align-items-center" title="How technically skilled is this group of threat agents?">Skill level</div>
+            <div class="h6 nomargin col-4 d-flex align-items-center" title="What technical skills are required by the threat agents?">Skill level</div>
             <div class="col-8">
               <select class="form-control" id="sl" name="sl" onchange="calculate()">
                 <option value="0">(0)</option>
-                <option value="1">No technical skills (1)</option>
-                <option value="2">(2)</option>
-                <option value="3">Some technical skills (3)</option>
-                <option value="4">(4)</option>
-                <option value="5">Advanced computer user (5)</option>
-                <option value="6">Network and programming skills (6)</option>
-                <option value="7">(7)</option>
-                <option value="8">(8)</option>
-                <option value="9">Security penetration skills (9)</option>
+                <option value="1"
+                  title="Additional access to expert domain knowledage in required special interest area">
+                  ... and expert domain knowledge (1)
+                </option>
+                <option value="2"
+                  title="Can find and exploit unknown vulnerabilities in std. software, potential access to zero-day vulns">
+                  Advanced Security penetration skills (2)</option>
+                </option>
+                <option value="3" 
+                  title="Additional domain knowledge regarding required special interest area e.g., field bus system in question">
+                  ... and some special domain knowledge (3)</option>
+                </option>
+                <option value="4" 
+                  title="Additional security knowledge on common/known vulnerabilities and exploit techniques">
+                  Security and penetration skills (4)</option>
+                </option>
+                <option value="5"
+                  title="Can modify or create custom programs for reqired tasks">
+                  Advanced programming and networking skills (5)
+                </option>
+                <option value="6"
+                  title="Skipt kiddie, can compile exploits, simple code modifications">
+                  Basic programming and networking skills (6)
+                <option value="7"
+                  title="Power user, knows how to use readily available programs">
+                  Advanced computer user (7)
+                <option value="8"
+                  title="Some basic technical skills required">
+                  Some technical skills (8)
+                <option value="9"
+                  title="No technical skills required">
+                  No technical skills (9)
+                </option>
               </select>
             </div>
           </div>
@@ -57,15 +78,30 @@
             <div class="col-8">
               <select class="form-control" aria-label=".form-select-sm example" id="m" name="m" onchange="calculate()">
                 <option value="0">(0)</option>
-                <option value="1">Low or no reward (1)</option>
+                <option value="1"
+                  title="Hard to monetize or profit from exploitation scenarios">
+                  Low or almost no reward (1)
+                </option>
                 <option value="2">(2)</option>
                 <option value="3">(3)</option>
                 <option value="4">Possible reward (4)</option>
-                <option value="5">(5)</option>
-                <option value="6">(6)</option>
-                <option value="7">(7)</option>
-                <option value="8">(8)</option>
-                <option value="9">High reward (9)</option>
+                <option value="5"
+                  title="Some reward">
+                  Some reward (5)
+                </option>
+                <option value="6"
+                  title="Good chance of solid reward">
+                  Good chance of solid reward (6)</option>
+                <option value="7"
+                  title="Possibly high rewward">
+                  Possibly high reward (7)</option>
+                <option value="8"
+                  title="High chance of reward">
+                  High chance of high reward (8)</option>
+                <option value="9"
+                  title="High reward is almost guaranteed or instant/easily optainable">
+                  High instant reward/benefit (9)
+                </option>
               </select>
             </div>
           </div>
@@ -74,8 +110,10 @@
             <div class="col-8">
               <select class="form-control" aria-label=".form-select-sm example" id="o" name="o" onchange="calculate()">
                 <option value="0">(0)</option>
-                <option value="0">Full access or expensive resources required (0)</option>
-                <option value="1">(1)</option>
+                <option value="0"
+                  title="Full access is a prequesit, or required resources are prohibitively expensive">
+                  Full access or expensive resources required (0)</option>
+                <option value="1">High priv. access or resources required (1)</option>
                 <option value="2">(2)</option>
                 <option value="3">(3)</option>
                 <option value="4">Special access or resources required (4)</option>
@@ -88,7 +126,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="h6 nomargin col-4 d-flex align-items-center" title="How large is this group of threat agents?">Size</div>
+            <div class="h6 nomargin col-4 d-flex align-items-center" title="How large is this group of potential threat agents?">Size</div>
             <div class="col-8">
               <select class="form-control" aria-label=".form-select-sm example" id="s" name="s" onchange="calculate()">
                 <option value="0">(0)</option>
@@ -344,7 +382,9 @@
         </section>
       </div>
 
+      <!-- TOTAL TECHNICAL RISK --> 
       <section>
+        <h5 class="border-bottom">Total technical risk score (without business impact)</h5>
         <div class="risk RTS">
           <h4>0</h4>
         </div>
@@ -359,14 +399,24 @@
 
         <!-- IMPACT SCORE -->
         <section>
-          <h5 class="border-bottom">Total Impact score</h5>
+          <h5 class="border-bottom">Total impact score</h5>
           <h6 class="IS nomargin">0</h6>
         </section>
       </div>
-
+      
+      <!-- TOTAL RISK --> 
       <section>
+        <h5 class="border-bottom">Total risk score (with business impact)</h5>
         <div class="risk RS">
           <h4>0</h4>
+        </div>
+      </section>
+
+      <!-- SPIDER CHART --> 
+      <section>
+        <canvas class="riskChart" id="riskChart" height="75"></canvas>
+        <!-- <div class="risk RS">
+          <h4>0</h4> --!
         </div>
       </section>
 
@@ -378,14 +428,19 @@
         </div>
       </section>
 
+     
       <section>
-        <h3>Paste any URL to reuse only its vector parameters</h3>
+        <h4>Paste any URL to reuse only its vector parameters in this page</h3>
         <form id="urlForm">
-          <input type="text" id="urlInput" placeholder="Paste full URL here">
+          <input type="text" id="urlInput" style="width: 80%" placeholder="Paste full URL here">
           <button type="submit">Calculate</button>
         </form>
 
         <script>
+          function isThreatVector(str) {
+            return str.startsWith("(") && str.endsWith(")");
+          }
+
           document.getElementById("urlForm").addEventListener("submit", function(e) {
             e.preventDefault();
 
@@ -404,11 +459,15 @@
                 alert("No query parameters found in the URL.");
               }
             } catch (err) {
+              if (isThreatVector(input))
+                  window.location.href = window.location.pathname + "?vector=" + encodeURIComponent(input);
               alert("Please enter a valid URL.");
             }
           });
         </script>
       </section>
+
+
 
       <!-- CREDITS -->
       <section>
