@@ -312,8 +312,8 @@ function updateRiskSummary(RS, LS, FLS, IS, FIS, TS, TIS) {
   }
 
   var html = 'Risk ' + colored(RS) +
-    ', likelihood score ' + LS + ' ' + colored(FLS) +
-    ', impact score ' + IS + ' ' + colored(FIS); 
+    ', likelihood score ' + parseFloat(LS).toFixed(2) + ' ' + colored(FLS) +
+    ', impact score ' + parseFloat(IS).toFixed(2) + ' ' + colored(FIS); 
   
   //', technical impact score ' + TS + ' ' + colored(TIS) + '.';
 
