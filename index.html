@@ -487,11 +487,12 @@
         </div>
       </section>
 
-      <!-- SUMMARY TEXT -->
+      <!-- SUMMARY TEXT AND VECTOR -->
       <section>
-        <p id="risk-summary" style="font-size: 14px; text-align: center; margin-top: 10px;"></p>
-        <!-- 
-        <table id="stride-table" style="margin: 20px auto; border-collapse: collapse; font-family: 'Poppins', sans-serif; font-size: 14px;">
+        <div>
+          <p id="risk-summary" style="font-size: 11px; text-align: center; margin-top: 10px;"></p>
+          <!-- 
+          <table id="stride-table" style="margin: 20px auto; border-collapse: collapse; font-family: 'Poppins', sans-serif; font-size: 14px;">
           <tr>
             <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">S</td>
             <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">T</td>
@@ -499,24 +500,20 @@
             <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">I</td>
             <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">D</td>
             <td onclick="toggleStrideCell(this)" style="border: 2px solid #999; padding: 10px 20px; cursor: pointer; font-weight: bold; text-align: center; min-width: 50px;">E</td>
-          </tr>
-        </table>
-        -->
-      </section>
-
-      <!-- VECTOR -->
-      <section>
-        <div>
-          <p style="font-size: 14px;"><a id="score" href="https://kernoelpanic.github.io/OWASP-Risk-Rating-Calculator/?vector=(SL:1/M:7/O:0/S:0/ED:3/EE:2/A:4/ID:4/LC:8/LI:7/LAV:7/LAC:5/FD:0/RD:0/NC:0/PV:0)" target="_blank">(SL:1/M:7/O:0/S:0/ED:3/EE:2/A:4/ID:4/LC:8/LI:7/LAV:7/LAC:5/FD:0/RD:0/NC:0/PV:0)</a>
+           </tr>
+          </table>
+          -->
+          <p style="font-size: 11px;"><a id="score" href="https://kernoelpanic.github.io/OWASP-Risk-Rating-Calculator/?vector=(SL:1/M:7/O:0/S:0/ED:3/EE:2/A:4/ID:4/LC:8/LI:7/LAV:7/LAC:5/FD:0/RD:0/NC:0/PV:0)" target="_blank">(SL:1/M:7/O:0/S:0/ED:3/EE:2/A:4/ID:4/LC:8/LI:7/LAV:7/LAC:5/FD:0/RD:0/NC:0/PV:0)</a>
           </p>
         </div>
       </section>
+    
 
-     
+      <!-- VECTOR CONVERTER -->
       <section>
-        <h4>Paste any URL to reuse only its vector parameters in this page</h3>
+        <h5>Paste any URL to reuse only its vector parameters in this page</h5>
         <form id="urlForm">
-          <input type="text" id="urlInput" style="width: 80%" placeholder="Paste full URL here">
+          <input type="text" id="urlInput" style="width: 80%" placeholder="Paste full URL or vector string here">
           <button type="submit">Calculate</button>
         </form>
 
